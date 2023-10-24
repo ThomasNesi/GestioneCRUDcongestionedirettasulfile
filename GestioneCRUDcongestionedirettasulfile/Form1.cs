@@ -33,7 +33,7 @@ namespace GestioneCRUDcongestionedirettasulfile
         {
             if (string.IsNullOrEmpty(Nome_box.Text) || string.IsNullOrEmpty(Prezzo_box.Text))
             {
-                MessageBox.Show("Non hai inserito nulla!");
+                MessageBox.Show("Non hai inserito nulla nel prezzo o nel nome prodotto!");
             }
             else
             {
@@ -71,9 +71,9 @@ namespace GestioneCRUDcongestionedirettasulfile
 
         private void Modifican_btn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(ricerca_box.Text))
+            if (string.IsNullOrEmpty(modnome_box.Text))
             {
-                MessageBox.Show("Non hai inserito nulla!");
+                MessageBox.Show("Non hai inserito nesssun nome!");
             }
             else
             {
@@ -95,9 +95,9 @@ namespace GestioneCRUDcongestionedirettasulfile
 
         private void Modificap_btn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(ricerca_box.Text))
+            if (string.IsNullOrEmpty(modprezzo_box.Text))
             {
-                MessageBox.Show("Non hai inserito nulla!");
+                MessageBox.Show("Non hai inserito nesssun prezzo!");
             }
             else
             {
@@ -120,7 +120,7 @@ namespace GestioneCRUDcongestionedirettasulfile
         {
             if (string.IsNullOrEmpty(ricerca_box.Text))
             {
-                MessageBox.Show("Non hai inserito nulla!");
+                MessageBox.Show("Non hai inserito nessun prodotto della lista!");
             }
             else
             {
