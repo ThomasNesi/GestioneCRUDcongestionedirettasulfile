@@ -195,11 +195,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 122);
+            this.label6.Location = new System.Drawing.Point(33, 109);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 13);
+            this.label6.Size = new System.Drawing.Size(88, 26);
             this.label6.TabIndex = 40;
-            this.label6.Text = "RICERCA NOME";
+            this.label6.Text = "RICERCA \r\nNOME/PREZZO";
             // 
             // label5
             // 

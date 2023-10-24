@@ -84,8 +84,8 @@ namespace GestioneCRUDcongestionedirettasulfile
                     if (p[i].nome == ricerca_box.Text)
                     {
                         p[i].nome = modnome_box.Text;
-                        MessageBox.Show("Modificato");
                         aggiornaVista(dim);
+                        MessageBox.Show("Nome modificato");
                         break;
                     }
                     aggiornaVista(dim);
@@ -108,8 +108,8 @@ namespace GestioneCRUDcongestionedirettasulfile
                     if (p[i].prezzo == float.Parse(ricerca_box.Text))
                     {
                         p[i].prezzo = float.Parse(modprezzo_box.Text);
-                        MessageBox.Show("Modificato");
                         aggiornaVista(dim);
+                        MessageBox.Show("Prezzo modificato");
                         break;
                     }
                 }
