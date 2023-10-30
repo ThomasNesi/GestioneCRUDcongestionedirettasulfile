@@ -186,35 +186,50 @@ namespace GestioneCRUDcongestionedirettasulfile
 
         private void ordinamento_btn_Click(object sender, EventArgs e)
         {
-            // ordinamento Bubble Sort
-            for (int i = 0; i < dim - 1; i++)
+            if (string.IsNullOrEmpty(p[0].nome))
             {
-                for (int j = 0; j < dim - i - 1; j++)
+                MessageBox.Show("Non hai inserito nessun prodotto della lista!");
+            }
+            else
+            {
+                // ordinamento Bubble Sort
+                for (int i = 0; i < dim - 1; i++)
                 {
-                    if (string.Compare(p[j].nome, p[j + 1].nome) > 0)
+                    for (int j = 0; j < dim - i - 1; j++)
                     {
-                        // Scambia gli elementi se sono fuori ordine
-                        Prodotto temp = p[j];
-                        p[j] = p[j + 1];
-                        p[j + 1] = temp;
+                        if (string.Compare(p[j].nome, p[j + 1].nome) > 0)
+                        {
+                            // Scambia gli elementi se sono fuori ordine
+                            Prodotto temp = p[j];
+                            p[j] = p[j + 1];
+                            p[j + 1] = temp;
+                        }
                     }
                 }
+                articoli.Items.Clear();
+                // aggiunta degli elmenti ordinati
+                aggiornaVista(dim);
             }
-            articoli.Items.Clear();
-            // aggiunta degli elmenti ordinati
-            aggiornaVista(dim);
         }
 
         private void fileprod_btn_Click(object sender, EventArgs e)
         {
-            string filename = "prodotti.txt";
-            StreamWriter writer = new StreamWriter(filename);
-            // aggiunge i nomi e i prezzi dei prodotti nel file
-            for (int i = 0; i < dim; i++)
+            if (string.IsNullOrEmpty(p[0].nome))
             {
-                writer.WriteLine("Nome: " + p[i].nome.ToString() + "       Prezzo: " + p[i].prezzo.ToString() + "£");
+                MessageBox.Show("Non hai inserito nessun prodotto della lista!");
             }
-            writer.Close();
+            else
+            {
+                string filename = "prodotti.txt";
+                StreamWriter writer = new StreamWriter(filename);
+                // aggiunge i nomi e i prezzi dei prodotti nel file
+                for (int i = 0; i < dim; i++)
+                {
+                    writer.WriteLine("Nome: " + p[i].nome.ToString() + "       Prezzo: " + p[i].prezzo.ToString() + "£");
+                }
+                writer.Close();
+                MessageBox.Show("Prodotti salvati nel file");
+            }
         }
 
         private void mostraprod_btn_Click(object sender, EventArgs e)
@@ -231,6 +246,7 @@ namespace GestioneCRUDcongestionedirettasulfile
                     articoli.Items.Add(line);
                 }
                 reader.Close();
+                MessageBox.Show("Prodotti nel file");
             }
             else
             {
