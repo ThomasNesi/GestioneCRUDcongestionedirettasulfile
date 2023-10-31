@@ -87,9 +87,9 @@
             // 
             // mostraprod_btn
             // 
-            this.mostraprod_btn.Location = new System.Drawing.Point(359, 286);
+            this.mostraprod_btn.Location = new System.Drawing.Point(356, 286);
             this.mostraprod_btn.Name = "mostraprod_btn";
-            this.mostraprod_btn.Size = new System.Drawing.Size(86, 37);
+            this.mostraprod_btn.Size = new System.Drawing.Size(89, 37);
             this.mostraprod_btn.TabIndex = 29;
             this.mostraprod_btn.Text = "mostra prodotti nel file";
             this.mostraprod_btn.UseVisualStyleBackColor = true;
@@ -97,11 +97,11 @@
             // 
             // fileprod_btn
             // 
-            this.fileprod_btn.Location = new System.Drawing.Point(359, 244);
+            this.fileprod_btn.Location = new System.Drawing.Point(112, 62);
             this.fileprod_btn.Name = "fileprod_btn";
-            this.fileprod_btn.Size = new System.Drawing.Size(86, 36);
+            this.fileprod_btn.Size = new System.Drawing.Size(82, 21);
             this.fileprod_btn.TabIndex = 28;
-            this.fileprod_btn.Text = "salva prodotti in un file";
+            this.fileprod_btn.Text = "Aggiungi";
             this.fileprod_btn.UseVisualStyleBackColor = true;
             this.fileprod_btn.Click += new System.EventHandler(this.fileprod_btn_Click);
             // 
@@ -154,7 +154,7 @@
             // 
             // inserisci_btn
             // 
-            this.inserisci_btn.Location = new System.Drawing.Point(124, 62);
+            this.inserisci_btn.Location = new System.Drawing.Point(356, 246);
             this.inserisci_btn.Name = "inserisci_btn";
             this.inserisci_btn.Size = new System.Drawing.Size(75, 23);
             this.inserisci_btn.TabIndex = 44;

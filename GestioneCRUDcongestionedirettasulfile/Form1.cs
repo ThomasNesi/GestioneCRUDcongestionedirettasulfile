@@ -86,9 +86,10 @@ namespace GestioneCRUDcongestionedirettasulfile
                         p[i].nome = modnome_box.Text;
                         aggiornaVista(dim);
                         MessageBox.Show("Nome modificato");
+                        modnome_box.Clear();
+                        ricerca_box.Clear();
                         break;
                     }
-                    aggiornaVista(dim);
                 }
             }
         }
@@ -110,6 +111,8 @@ namespace GestioneCRUDcongestionedirettasulfile
                         p[i].prezzo = float.Parse(modprezzo_box.Text);
                         aggiornaVista(dim);
                         MessageBox.Show("Prezzo modificato");
+                        modprezzo_box.Clear();
+                        ricerca_box.Clear();
                         break;
                     }
                 }
@@ -123,7 +126,7 @@ namespace GestioneCRUDcongestionedirettasulfile
                 MessageBox.Show("Non hai inserito nessun prodotto della lista!");
             }
             else
-            {
+            { 
                 // scorre ogni prodotto
                 for (int i = 0; i < dim; i++)
                 {
@@ -139,6 +142,7 @@ namespace GestioneCRUDcongestionedirettasulfile
 
                         aggiornaVista(dim);
                         MessageBox.Show("Cancellato");
+                        ricerca_box.Clear();
                         return;
                     }
                 }
@@ -214,19 +218,17 @@ namespace GestioneCRUDcongestionedirettasulfile
 
         private void fileprod_btn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(p[0].nome))
+            if (string.IsNullOrEmpty(Nome_box.Text) || string.IsNullOrEmpty(Prezzo_box.Text))
             {
-                MessageBox.Show("Non hai inserito nessun prodotto della lista!");
+                MessageBox.Show("Non hai inserito nulla nel prezzo o nel nome prodotto!");
             }
             else
             {
                 string filename = "prodotti.txt";
                 StreamWriter writer = new StreamWriter(filename);
                 // aggiunge i nomi e i prezzi dei prodotti nel file
-                for (int i = 0; i < dim; i++)
-                {
-                    writer.WriteLine("Nome: " + p[i].nome.ToString() + "       Prezzo: " + p[i].prezzo.ToString() + "£");
-                }
+                //writer.WriteLine($"{ Nome_box.Text};{ Prezzo_box.Text};1;0;" .PadRight(filenameLenght - 4) + "##");
+                writer.WriteLine(Nome_box.Text + ";" + Prezzo_box.Text);
                 writer.Close();
                 MessageBox.Show("Prodotti salvati nel file");
             }
@@ -267,7 +269,7 @@ namespace GestioneCRUDcongestionedirettasulfile
                 // toglie la percentuale a ogni prezzo
                 for (int i = 0; i < dim; i++)
                 {
-                    perc = (percentuale / 100) * p[i].prezzo;
+                    perc = (percentuale / 100) * p[i].prezzo; 
                     p[i].prezzo = p[i].prezzo - perc;
                 }
                 aggiornaVista(dim);
