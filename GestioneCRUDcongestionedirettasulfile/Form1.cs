@@ -81,13 +81,13 @@ namespace GestioneCRUDcongestionedirettasulfile
                 for (int i = 0; i < dim; i++)
                 {
                     // controlla se è il prodotto ricercato
-                    if (p[i].nome == ricerca_box.Text)
+                    if (p[i].nome == ricercanome_box.Text)
                     {
                         p[i].nome = modnome_box.Text;
                         aggiornaVista(dim);
                         MessageBox.Show("Nome modificato");
                         modnome_box.Clear();
-                        ricerca_box.Clear();
+                        ricercanome_box.Clear();
                         break;
                     }
                 }
@@ -106,13 +106,13 @@ namespace GestioneCRUDcongestionedirettasulfile
                 for (int i = 0; i < dim; i++)
                 {
                     // controlla se è il prezzo ricercato
-                    if (p[i].prezzo == float.Parse(ricerca_box.Text))
+                    if (p[i].prezzo == float.Parse(ricercanome_box.Text))
                     {
                         p[i].prezzo = float.Parse(modprezzo_box.Text);
                         aggiornaVista(dim);
                         MessageBox.Show("Prezzo modificato");
                         modprezzo_box.Clear();
-                        ricerca_box.Clear();
+                        ricercanome_box.Clear();
                         break;
                     }
                 }
@@ -125,9 +125,8 @@ namespace GestioneCRUDcongestionedirettasulfile
             string cestinoFilePath = @"cestino_prodotti.txt";
             if (File.Exists(prodFilePath))
             {
-                // Copia il contenuto del file dei prodotti nel cestino
-                File.WriteAllText(cestinoFilePath, File.ReadAllText(prodFilePath));
-                // Cancella il contenuto del file dei prodotti
+                string contenuto = File.Exists(cestinoFilePath) ? File.ReadAllText(cestinoFilePath) : "";
+                File.WriteAllText(cestinoFilePath, contenuto + File.ReadAllText(prodFilePath));
                 File.Delete(prodFilePath);
                 MessageBox.Show("Cancellazione logica completata. Il contenuto è stato spostato nel cestino.");
             }
@@ -151,7 +150,7 @@ namespace GestioneCRUDcongestionedirettasulfile
                     string FilePath = @"prodotti.txt";
                     var oFile = new FileStream(FilePath, FileMode.Append, FileAccess.Write, FileShare.Read);
                     StreamWriter sw = new StreamWriter(oFile);
-                    sw.WriteLine($"{Nome_box.Text};{Prezzo_box.Text}€");
+                    sw.WriteLine($"{Nome_box.Text};{Prezzo_box.Text}");
                     sw.Close();
                     MessageBox.Show("Prodotto aggiunto al file.");
 
@@ -202,11 +201,11 @@ namespace GestioneCRUDcongestionedirettasulfile
             return conteggio;
         }
 
-        private void cancfisica_Click(object sender, EventArgs e)
+        private void cancfisica_btn_Click(object sender, EventArgs e)
         {
             string prodFilePath = @"prodotti.txt";
             string cestinoFilePath = @"cestino_prodotti.txt";
-            if (File.Exists(prodFilePath))
+            if (File.Exists(prodFilePath) || File.Exists(cestinoFilePath))
             {
                 // Cancella il contenuto del file dei prodotti
                 File.Delete(prodFilePath);
@@ -218,7 +217,42 @@ namespace GestioneCRUDcongestionedirettasulfile
                 MessageBox.Show("Non c'è nulla nel file.");
             }
         }
+
+        private void recupera_btn_Click(object sender, EventArgs e)
+        {
+            string prodFilePath = @"prodotti.txt";
+            string cestinoFilePath = @"cestino_prodotti.txt";
+
+            string ricercan = ricercanome_box.Text;
+            string ricercap = ricercaprezzo_box.Text;
+
+            if (File.Exists(cestinoFilePath))
+            {
+                using (StreamReader sr = File.OpenText(cestinoFilePath))
+                {
+                    string s;
+
+                    while ((s = sr.ReadLine()) != null)
+                    {
+                        string[] dati = s.Split(';');
+
+                        if (dati[3] == "0" && dati[0] == ricercan)
+                        {
+                            File.WriteAllText(prodFilePath, dati[3] + dati[0]);
+                            sr.Close();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Il cestino è vuoto.");
+            }
+
+        }
     }
 }
+   
+
        
 

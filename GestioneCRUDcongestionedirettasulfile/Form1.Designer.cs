@@ -37,15 +37,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.ricerca_box = new System.Windows.Forms.TextBox();
+            this.ricercanome_box = new System.Windows.Forms.TextBox();
             this.modnome_box = new System.Windows.Forms.TextBox();
             this.modprezzo_box = new System.Windows.Forms.TextBox();
             this.Prezzo_box = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Nome_box = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.cancfisica = new System.Windows.Forms.Button();
+            this.recupera_btn = new System.Windows.Forms.Button();
+            this.cancfisica_btn = new System.Windows.Forms.Button();
+            this.ricercaprezzo_box = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // articoli
@@ -80,7 +81,7 @@
             // 
             // canclogica_btn
             // 
-            this.canclogica_btn.Location = new System.Drawing.Point(255, 95);
+            this.canclogica_btn.Location = new System.Drawing.Point(342, 104);
             this.canclogica_btn.Name = "canclogica_btn";
             this.canclogica_btn.Size = new System.Drawing.Size(85, 40);
             this.canclogica_btn.TabIndex = 43;
@@ -90,7 +91,7 @@
             // 
             // Modifican_btn
             // 
-            this.Modifican_btn.Location = new System.Drawing.Point(155, 185);
+            this.Modifican_btn.Location = new System.Drawing.Point(155, 239);
             this.Modifican_btn.Name = "Modifican_btn";
             this.Modifican_btn.Size = new System.Drawing.Size(78, 28);
             this.Modifican_btn.TabIndex = 42;
@@ -100,7 +101,7 @@
             // 
             // Modificap_btn
             // 
-            this.Modificap_btn.Location = new System.Drawing.Point(155, 238);
+            this.Modificap_btn.Location = new System.Drawing.Point(155, 278);
             this.Modificap_btn.Name = "Modificap_btn";
             this.Modificap_btn.Size = new System.Drawing.Size(78, 28);
             this.Modificap_btn.TabIndex = 41;
@@ -111,7 +112,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(33, 109);
+            this.label6.Location = new System.Drawing.Point(70, 150);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(88, 26);
             this.label6.TabIndex = 40;
@@ -120,7 +121,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(31, 177);
+            this.label5.Location = new System.Drawing.Point(36, 231);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(93, 13);
             this.label5.TabIndex = 39;
@@ -129,29 +130,29 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 230);
+            this.label4.Location = new System.Drawing.Point(36, 270);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(105, 13);
             this.label4.TabIndex = 38;
             this.label4.Text = "MODIFICA PREZZO";
             // 
-            // ricerca_box
+            // ricercanome_box
             // 
-            this.ricerca_box.Location = new System.Drawing.Point(34, 138);
-            this.ricerca_box.Name = "ricerca_box";
-            this.ricerca_box.Size = new System.Drawing.Size(97, 20);
-            this.ricerca_box.TabIndex = 36;
+            this.ricercanome_box.Location = new System.Drawing.Point(136, 190);
+            this.ricercanome_box.Name = "ricercanome_box";
+            this.ricercanome_box.Size = new System.Drawing.Size(97, 20);
+            this.ricercanome_box.TabIndex = 36;
             // 
             // modnome_box
             // 
-            this.modnome_box.Location = new System.Drawing.Point(34, 193);
+            this.modnome_box.Location = new System.Drawing.Point(39, 247);
             this.modnome_box.Name = "modnome_box";
             this.modnome_box.Size = new System.Drawing.Size(97, 20);
             this.modnome_box.TabIndex = 35;
             // 
             // modprezzo_box
             // 
-            this.modprezzo_box.Location = new System.Drawing.Point(34, 246);
+            this.modprezzo_box.Location = new System.Drawing.Point(39, 286);
             this.modprezzo_box.Name = "modprezzo_box";
             this.modprezzo_box.Size = new System.Drawing.Size(97, 20);
             this.modprezzo_box.TabIndex = 34;
@@ -188,39 +189,48 @@
             this.label1.TabIndex = 30;
             this.label1.Text = "NOME";
             // 
-            // button1
+            // recupera_btn
             // 
-            this.button1.Location = new System.Drawing.Point(255, 138);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 37);
-            this.button1.TabIndex = 44;
-            this.button1.Text = "recupera prodotto";
-            this.button1.UseVisualStyleBackColor = true;
+            this.recupera_btn.Location = new System.Drawing.Point(223, 121);
+            this.recupera_btn.Name = "recupera_btn";
+            this.recupera_btn.Size = new System.Drawing.Size(85, 37);
+            this.recupera_btn.TabIndex = 44;
+            this.recupera_btn.Text = "recupera prodotto";
+            this.recupera_btn.UseVisualStyleBackColor = true;
+            this.recupera_btn.Click += new System.EventHandler(this.recupera_btn_Click);
             // 
-            // cancfisica
+            // cancfisica_btn
             // 
-            this.cancfisica.Location = new System.Drawing.Point(346, 95);
-            this.cancfisica.Name = "cancfisica";
-            this.cancfisica.Size = new System.Drawing.Size(81, 40);
-            this.cancfisica.TabIndex = 45;
-            this.cancfisica.Text = "cancellazione fisica";
-            this.cancfisica.UseVisualStyleBackColor = true;
-            this.cancfisica.Click += new System.EventHandler(this.cancfisica_Click);
+            this.cancfisica_btn.Location = new System.Drawing.Point(342, 150);
+            this.cancfisica_btn.Name = "cancfisica_btn";
+            this.cancfisica_btn.Size = new System.Drawing.Size(85, 40);
+            this.cancfisica_btn.TabIndex = 45;
+            this.cancfisica_btn.Text = "cancellazione fisica";
+            this.cancfisica_btn.UseVisualStyleBackColor = true;
+            this.cancfisica_btn.Click += new System.EventHandler(this.cancfisica_btn_Click);
+            // 
+            // ricercaprezzo_box
+            // 
+            this.ricercaprezzo_box.Location = new System.Drawing.Point(29, 190);
+            this.ricercaprezzo_box.Name = "ricercaprezzo_box";
+            this.ricercaprezzo_box.Size = new System.Drawing.Size(100, 20);
+            this.ricercaprezzo_box.TabIndex = 46;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.cancfisica);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ricercaprezzo_box);
+            this.Controls.Add(this.cancfisica_btn);
+            this.Controls.Add(this.recupera_btn);
             this.Controls.Add(this.canclogica_btn);
             this.Controls.Add(this.Modifican_btn);
             this.Controls.Add(this.Modificap_btn);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.ricerca_box);
+            this.Controls.Add(this.ricercanome_box);
             this.Controls.Add(this.modnome_box);
             this.Controls.Add(this.modprezzo_box);
             this.Controls.Add(this.Prezzo_box);
@@ -248,15 +258,16 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox ricerca_box;
+        private System.Windows.Forms.TextBox ricercanome_box;
         private System.Windows.Forms.TextBox modnome_box;
         private System.Windows.Forms.TextBox modprezzo_box;
         private System.Windows.Forms.TextBox Prezzo_box;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Nome_box;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button cancfisica;
+        private System.Windows.Forms.Button recupera_btn;
+        private System.Windows.Forms.Button cancfisica_btn;
+        private System.Windows.Forms.TextBox ricercaprezzo_box;
     }
 }
 
