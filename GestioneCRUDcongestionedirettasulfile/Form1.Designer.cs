@@ -29,13 +29,9 @@
         private void InitializeComponent()
         {
             this.articoli = new System.Windows.Forms.ListBox();
-            this.min_btn = new System.Windows.Forms.Button();
-            this.max_btn = new System.Windows.Forms.Button();
             this.mostraprod_btn = new System.Windows.Forms.Button();
             this.fileprod_btn = new System.Windows.Forms.Button();
-            this.somma_btn = new System.Windows.Forms.Button();
-            this.inserisci_btn = new System.Windows.Forms.Button();
-            this.cancella_btn = new System.Windows.Forms.Button();
+            this.canclogica_btn = new System.Windows.Forms.Button();
             this.Modifican_btn = new System.Windows.Forms.Button();
             this.Modificap_btn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -48,6 +44,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Nome_box = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.cancfisica = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // articoli
@@ -59,26 +57,6 @@
             this.articoli.Name = "articoli";
             this.articoli.Size = new System.Drawing.Size(323, 342);
             this.articoli.TabIndex = 14;
-            // 
-            // min_btn
-            // 
-            this.min_btn.Location = new System.Drawing.Point(367, 12);
-            this.min_btn.Name = "min_btn";
-            this.min_btn.Size = new System.Drawing.Size(78, 25);
-            this.min_btn.TabIndex = 20;
-            this.min_btn.Text = "prezzo min";
-            this.min_btn.UseVisualStyleBackColor = true;
-            this.min_btn.Click += new System.EventHandler(this.min_btn_Click);
-            // 
-            // max_btn
-            // 
-            this.max_btn.Location = new System.Drawing.Point(367, 46);
-            this.max_btn.Name = "max_btn";
-            this.max_btn.Size = new System.Drawing.Size(78, 25);
-            this.max_btn.TabIndex = 19;
-            this.max_btn.Text = "prezzo max";
-            this.max_btn.UseVisualStyleBackColor = true;
-            this.max_btn.Click += new System.EventHandler(this.max_btn_Click);
             // 
             // mostraprod_btn
             // 
@@ -100,35 +78,15 @@
             this.fileprod_btn.UseVisualStyleBackColor = true;
             this.fileprod_btn.Click += new System.EventHandler(this.fileprod_btn_Click);
             // 
-            // somma_btn
+            // canclogica_btn
             // 
-            this.somma_btn.Location = new System.Drawing.Point(367, 77);
-            this.somma_btn.Name = "somma_btn";
-            this.somma_btn.Size = new System.Drawing.Size(89, 36);
-            this.somma_btn.TabIndex = 26;
-            this.somma_btn.Text = "somma prezzo prodotti";
-            this.somma_btn.UseVisualStyleBackColor = true;
-            this.somma_btn.Click += new System.EventHandler(this.somma_btn_Click);
-            // 
-            // inserisci_btn
-            // 
-            this.inserisci_btn.Location = new System.Drawing.Point(356, 246);
-            this.inserisci_btn.Name = "inserisci_btn";
-            this.inserisci_btn.Size = new System.Drawing.Size(75, 23);
-            this.inserisci_btn.TabIndex = 44;
-            this.inserisci_btn.Text = "aggiungi";
-            this.inserisci_btn.UseVisualStyleBackColor = true;
-            this.inserisci_btn.Click += new System.EventHandler(this.inserisci_btn_Click);
-            // 
-            // cancella_btn
-            // 
-            this.cancella_btn.Location = new System.Drawing.Point(155, 130);
-            this.cancella_btn.Name = "cancella_btn";
-            this.cancella_btn.Size = new System.Drawing.Size(78, 28);
-            this.cancella_btn.TabIndex = 43;
-            this.cancella_btn.Text = "cancella";
-            this.cancella_btn.UseVisualStyleBackColor = true;
-            this.cancella_btn.Click += new System.EventHandler(this.cancella_btn_Click);
+            this.canclogica_btn.Location = new System.Drawing.Point(255, 95);
+            this.canclogica_btn.Name = "canclogica_btn";
+            this.canclogica_btn.Size = new System.Drawing.Size(85, 40);
+            this.canclogica_btn.TabIndex = 43;
+            this.canclogica_btn.Text = "cancellazione logica";
+            this.canclogica_btn.UseVisualStyleBackColor = true;
+            this.canclogica_btn.Click += new System.EventHandler(this.canclogica_btn_Click);
             // 
             // Modifican_btn
             // 
@@ -230,13 +188,33 @@
             this.label1.TabIndex = 30;
             this.label1.Text = "NOME";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(255, 138);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(85, 37);
+            this.button1.TabIndex = 44;
+            this.button1.Text = "recupera prodotto";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // cancfisica
+            // 
+            this.cancfisica.Location = new System.Drawing.Point(346, 95);
+            this.cancfisica.Name = "cancfisica";
+            this.cancfisica.Size = new System.Drawing.Size(81, 40);
+            this.cancfisica.TabIndex = 45;
+            this.cancfisica.Text = "cancellazione fisica";
+            this.cancfisica.UseVisualStyleBackColor = true;
+            this.cancfisica.Click += new System.EventHandler(this.cancfisica_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.inserisci_btn);
-            this.Controls.Add(this.cancella_btn);
+            this.Controls.Add(this.cancfisica);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.canclogica_btn);
             this.Controls.Add(this.Modifican_btn);
             this.Controls.Add(this.Modificap_btn);
             this.Controls.Add(this.label6);
@@ -251,9 +229,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mostraprod_btn);
             this.Controls.Add(this.fileprod_btn);
-            this.Controls.Add(this.somma_btn);
-            this.Controls.Add(this.min_btn);
-            this.Controls.Add(this.max_btn);
             this.Controls.Add(this.articoli);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -265,13 +240,9 @@
         #endregion
 
         private System.Windows.Forms.ListBox articoli;
-        private System.Windows.Forms.Button min_btn;
-        private System.Windows.Forms.Button max_btn;
         private System.Windows.Forms.Button mostraprod_btn;
         private System.Windows.Forms.Button fileprod_btn;
-        private System.Windows.Forms.Button somma_btn;
-        private System.Windows.Forms.Button inserisci_btn;
-        private System.Windows.Forms.Button cancella_btn;
+        private System.Windows.Forms.Button canclogica_btn;
         private System.Windows.Forms.Button Modifican_btn;
         private System.Windows.Forms.Button Modificap_btn;
         private System.Windows.Forms.Label label6;
@@ -284,6 +255,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Nome_box;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button cancfisica;
     }
 }
 

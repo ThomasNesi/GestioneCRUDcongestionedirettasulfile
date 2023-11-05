@@ -119,106 +119,26 @@ namespace GestioneCRUDcongestionedirettasulfile
             }
         }
 
-        private void cancella_btn_Click(object sender, EventArgs e)
+        private void canclogica_btn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(ricerca_box.Text))
+            string prodFilePath = @"prodotti.txt";
+            string cestinoFilePath = @"cestino_prodotti.txt";
+            if (File.Exists(prodFilePath))
             {
-                MessageBox.Show("Non hai inserito nessun prodotto della lista!");
-            }
-            else
-            { 
-                // scorre ogni prodotto
-                for (int i = 0; i < dim; i++)
-                {
-                    // verifica se è il prodotto ricercato
-                    if (p[i].nome == ricerca_box.Text)
-                    {
-                        // cambia e cancella la posizione del prodotto ricercato 
-                        for (int j = i; j < dim - 1; j++)
-                        {
-                            p[j] = p[j + 1];
-                        }
-                        dim--;
-
-                        aggiornaVista(dim);
-                        MessageBox.Show("Cancellato");
-                        ricerca_box.Clear();
-                        return;
-                    }
-                }
-            }
-        }
-
-        private void somma_btn_Click(object sender, EventArgs e)
-        {
-            float prezzotot = 0;
-            // somma tutti i prezzi
-            for (int i = 0; i < dim; i++)
-            {
-                prezzotot += p[i].prezzo;
-            }
-            MessageBox.Show("Prezzo totale: " + prezzotot + "£");
-        }
-
-        private void min_btn_Click(object sender, EventArgs e)
-        {
-            float min = 100;
-            //verifica quale prezzo è il minore
-            for (int i = 0; i < dim; i++)
-            {
-                if (p[i].prezzo < min)
-                {
-                    min = p[i].prezzo;
-                }
-            }
-            MessageBox.Show("Prezzo minore: " + min+ "£");
-        }
-
-        private void max_btn_Click(object sender, EventArgs e)
-        {
-            float maggiore = 0;
-            // verifica se quale prezzo è maggiore
-            for (int i = 0; i < dim; i++)
-            {
-                if (p[i].prezzo > maggiore)
-                {
-                    maggiore = p[i].prezzo;
-                }
-            }
-            MessageBox.Show("Prezzo maggiore: " + maggiore + "£");
-        }
-
-        private void ordinamento_btn_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(p[0].nome))
-            {
-                MessageBox.Show("Non hai inserito nessun prodotto della lista!");
+                // Copia il contenuto del file dei prodotti nel cestino
+                File.WriteAllText(cestinoFilePath, File.ReadAllText(prodFilePath));
+                // Cancella il contenuto del file dei prodotti
+                File.Delete(prodFilePath);
+                MessageBox.Show("Cancellazione logica completata. Il contenuto è stato spostato nel cestino.");
             }
             else
             {
-                // ordinamento Bubble Sort
-                for (int i = 0; i < dim - 1; i++)
-                {
-                    for (int j = 0; j < dim - i - 1; j++)
-                    {
-                        if (string.Compare(p[j].nome, p[j + 1].nome) > 0)
-                        {
-                            // Scambia gli elementi se sono fuori ordine
-                            Prodotto temp = p[j];
-                            p[j] = p[j + 1];
-                            p[j + 1] = temp;
-                        }
-                    }
-                }
-                articoli.Items.Clear();
-                // aggiunta degli elmenti ordinati
-                aggiornaVista(dim);
+                MessageBox.Show("Non c'è nulla nel file.");
             }
         }
 
         private void fileprod_btn_Click(object sender, EventArgs e)
         {
-            string FilePath = @"prodotti.txt";
             if (string.IsNullOrEmpty(Nome_box.Text) || string.IsNullOrEmpty(Prezzo_box.Text))
             {
                 MessageBox.Show("Non hai inserito nulla nel prezzo o nel nome prodotto!");
@@ -226,13 +146,13 @@ namespace GestioneCRUDcongestionedirettasulfile
             else
             {
                 string nomeprodotto = Nome_box.Text;
-                if (decimal.TryParse(Prezzo_box.Text, out decimal prezzoProdotto))   
+                if (decimal.TryParse(Prezzo_box.Text, out decimal prezzoProdotto))
                 {
-                        // Aggiungi il prodotto al file solo se sia il nome che il prezzo sono validi
-                    using (StreamWriter writer = File.AppendText(FilePath))
-                    {
-                        writer.WriteLine($"{nomeprodotto},{prezzoProdotto}");
-                    }
+                    string FilePath = @"prodotti.txt";
+                    var oFile = new FileStream(FilePath, FileMode.Append, FileAccess.Write, FileShare.Read);
+                    StreamWriter sw = new StreamWriter(oFile);
+                    sw.WriteLine($"{Nome_box.Text};{Prezzo_box.Text}€");
+                    sw.Close();
                     MessageBox.Show("Prodotto aggiunto al file.");
 
                 }
@@ -240,14 +160,7 @@ namespace GestioneCRUDcongestionedirettasulfile
                 {
                     MessageBox.Show("Inserisci un prezzo valido per il prodotto.");
                 }
-            } 
-            /*string filename = "prodotti.txt";
-            StreamWriter writer = new StreamWriter(filename);
-            // aggiunge i nomi e i prezzi dei prodotti nel file
-            //writer.WriteLine($"{ Nome_box.Text};{ Prezzo_box.Text};1;0;" .PadRight(filenameLenght - 4) + "##");
-            writer.WriteLine(Nome_box.Text + ";" + Prezzo_box.Text);
-            writer.Close();
-            MessageBox.Show("Prodotti salvati nel file");*/
+            }
         }
 
         private void mostraprod_btn_Click(object sender, EventArgs e)
@@ -288,7 +201,24 @@ namespace GestioneCRUDcongestionedirettasulfile
             }
             return conteggio;
         }
-       
-    }
 
+        private void cancfisica_Click(object sender, EventArgs e)
+        {
+            string prodFilePath = @"prodotti.txt";
+            string cestinoFilePath = @"cestino_prodotti.txt";
+            if (File.Exists(prodFilePath))
+            {
+                // Cancella il contenuto del file dei prodotti
+                File.Delete(prodFilePath);
+                File.Delete(cestinoFilePath);
+                MessageBox.Show("Cancellazione fisica completata.");
+            }
+            else
+            {
+                MessageBox.Show("Non c'è nulla nel file.");
+            }
+        }
+    }
 }
+       
+
