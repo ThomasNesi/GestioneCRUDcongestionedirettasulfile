@@ -33,11 +33,7 @@
             this.max_btn = new System.Windows.Forms.Button();
             this.mostraprod_btn = new System.Windows.Forms.Button();
             this.fileprod_btn = new System.Windows.Forms.Button();
-            this.ordinamento_btn = new System.Windows.Forms.Button();
             this.somma_btn = new System.Windows.Forms.Button();
-            this.agg_btn = new System.Windows.Forms.Button();
-            this.sott_btn = new System.Windows.Forms.Button();
-            this.prc_box = new System.Windows.Forms.TextBox();
             this.inserisci_btn = new System.Windows.Forms.Button();
             this.cancella_btn = new System.Windows.Forms.Button();
             this.Modifican_btn = new System.Windows.Forms.Button();
@@ -45,7 +41,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.ricerca_box = new System.Windows.Forms.TextBox();
             this.modnome_box = new System.Windows.Forms.TextBox();
             this.modprezzo_box = new System.Windows.Forms.TextBox();
@@ -105,52 +100,15 @@
             this.fileprod_btn.UseVisualStyleBackColor = true;
             this.fileprod_btn.Click += new System.EventHandler(this.fileprod_btn_Click);
             // 
-            // ordinamento_btn
-            // 
-            this.ordinamento_btn.Location = new System.Drawing.Point(356, 128);
-            this.ordinamento_btn.Name = "ordinamento_btn";
-            this.ordinamento_btn.Size = new System.Drawing.Size(89, 57);
-            this.ordinamento_btn.TabIndex = 27;
-            this.ordinamento_btn.Text = "ordinamento dei prodotti";
-            this.ordinamento_btn.UseVisualStyleBackColor = true;
-            this.ordinamento_btn.Click += new System.EventHandler(this.ordinamento_btn_Click);
-            // 
             // somma_btn
             // 
-            this.somma_btn.Location = new System.Drawing.Point(356, 191);
+            this.somma_btn.Location = new System.Drawing.Point(367, 77);
             this.somma_btn.Name = "somma_btn";
             this.somma_btn.Size = new System.Drawing.Size(89, 36);
             this.somma_btn.TabIndex = 26;
             this.somma_btn.Text = "somma prezzo prodotti";
             this.somma_btn.UseVisualStyleBackColor = true;
             this.somma_btn.Click += new System.EventHandler(this.somma_btn_Click);
-            // 
-            // agg_btn
-            // 
-            this.agg_btn.Location = new System.Drawing.Point(160, 331);
-            this.agg_btn.Name = "agg_btn";
-            this.agg_btn.Size = new System.Drawing.Size(75, 23);
-            this.agg_btn.TabIndex = 47;
-            this.agg_btn.Text = "aggiungere";
-            this.agg_btn.UseVisualStyleBackColor = true;
-            this.agg_btn.Click += new System.EventHandler(this.agg_btn_Click);
-            // 
-            // sott_btn
-            // 
-            this.sott_btn.Location = new System.Drawing.Point(160, 300);
-            this.sott_btn.Name = "sott_btn";
-            this.sott_btn.Size = new System.Drawing.Size(75, 23);
-            this.sott_btn.TabIndex = 46;
-            this.sott_btn.Text = "sottrarre";
-            this.sott_btn.UseVisualStyleBackColor = true;
-            this.sott_btn.Click += new System.EventHandler(this.sott_btn_Click);
-            // 
-            // prc_box
-            // 
-            this.prc_box.Location = new System.Drawing.Point(36, 331);
-            this.prc_box.Name = "prc_box";
-            this.prc_box.Size = new System.Drawing.Size(100, 20);
-            this.prc_box.TabIndex = 45;
             // 
             // inserisci_btn
             // 
@@ -219,16 +177,6 @@
             this.label4.TabIndex = 38;
             this.label4.Text = "MODIFICA PREZZO";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 284);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 39);
-            this.label3.TabIndex = 37;
-            this.label3.Text = "inserire una percentuale \r\nda sommare o sottrarre \r\na tutti i prezzi dei prodotti" +
-    "";
-            // 
             // ricerca_box
             // 
             this.ricerca_box.Location = new System.Drawing.Point(34, 138);
@@ -287,9 +235,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.agg_btn);
-            this.Controls.Add(this.sott_btn);
-            this.Controls.Add(this.prc_box);
             this.Controls.Add(this.inserisci_btn);
             this.Controls.Add(this.cancella_btn);
             this.Controls.Add(this.Modifican_btn);
@@ -297,7 +242,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.ricerca_box);
             this.Controls.Add(this.modnome_box);
             this.Controls.Add(this.modprezzo_box);
@@ -307,7 +251,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mostraprod_btn);
             this.Controls.Add(this.fileprod_btn);
-            this.Controls.Add(this.ordinamento_btn);
             this.Controls.Add(this.somma_btn);
             this.Controls.Add(this.min_btn);
             this.Controls.Add(this.max_btn);
@@ -326,11 +269,7 @@
         private System.Windows.Forms.Button max_btn;
         private System.Windows.Forms.Button mostraprod_btn;
         private System.Windows.Forms.Button fileprod_btn;
-        private System.Windows.Forms.Button ordinamento_btn;
         private System.Windows.Forms.Button somma_btn;
-        private System.Windows.Forms.Button agg_btn;
-        private System.Windows.Forms.Button sott_btn;
-        private System.Windows.Forms.TextBox prc_box;
         private System.Windows.Forms.Button inserisci_btn;
         private System.Windows.Forms.Button cancella_btn;
         private System.Windows.Forms.Button Modifican_btn;
@@ -338,7 +277,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox ricerca_box;
         private System.Windows.Forms.TextBox modnome_box;
         private System.Windows.Forms.TextBox modprezzo_box;

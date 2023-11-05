@@ -218,20 +218,36 @@ namespace GestioneCRUDcongestionedirettasulfile
 
         private void fileprod_btn_Click(object sender, EventArgs e)
         {
+            string FilePath = @"prodotti.txt";
             if (string.IsNullOrEmpty(Nome_box.Text) || string.IsNullOrEmpty(Prezzo_box.Text))
             {
                 MessageBox.Show("Non hai inserito nulla nel prezzo o nel nome prodotto!");
             }
             else
             {
-                string filename = "prodotti.txt";
-                StreamWriter writer = new StreamWriter(filename);
-                // aggiunge i nomi e i prezzi dei prodotti nel file
-                //writer.WriteLine($"{ Nome_box.Text};{ Prezzo_box.Text};1;0;" .PadRight(filenameLenght - 4) + "##");
-                writer.WriteLine(Nome_box.Text + ";" + Prezzo_box.Text);
-                writer.Close();
-                MessageBox.Show("Prodotti salvati nel file");
-            }
+                string nomeprodotto = Nome_box.Text;
+                if (decimal.TryParse(Prezzo_box.Text, out decimal prezzoProdotto))   
+                {
+                        // Aggiungi il prodotto al file solo se sia il nome che il prezzo sono validi
+                    using (StreamWriter writer = File.AppendText(FilePath))
+                    {
+                        writer.WriteLine($"{nomeprodotto},{prezzoProdotto}");
+                    }
+                    MessageBox.Show("Prodotto aggiunto al file.");
+
+                }
+                else
+                {
+                    MessageBox.Show("Inserisci un prezzo valido per il prodotto.");
+                }
+            } 
+            /*string filename = "prodotti.txt";
+            StreamWriter writer = new StreamWriter(filename);
+            // aggiunge i nomi e i prezzi dei prodotti nel file
+            //writer.WriteLine($"{ Nome_box.Text};{ Prezzo_box.Text};1;0;" .PadRight(filenameLenght - 4) + "##");
+            writer.WriteLine(Nome_box.Text + ";" + Prezzo_box.Text);
+            writer.Close();
+            MessageBox.Show("Prodotti salvati nel file");*/
         }
 
         private void mostraprod_btn_Click(object sender, EventArgs e)
@@ -255,45 +271,24 @@ namespace GestioneCRUDcongestionedirettasulfile
                 MessageBox.Show("Il file non esiste");
             }
         }
-
-        private void sott_btn_Click(object sender, EventArgs e)
+        private int ContaRighePerProdotto(string prodottoDaCercare)
         {
-            if (string.IsNullOrEmpty(prc_box.Text))
+            string FilePath = @"prodotti.txt";
+            int conteggio = 0;
+            using (StreamReader reader = new StreamReader(FilePath))
             {
-                MessageBox.Show("Non hai inserito la percentuale!");
-            }
-            else
-            {
-                float percentuale = float.Parse(prc_box.Text);
-                float perc;
-                // toglie la percentuale a ogni prezzo
-                for (int i = 0; i < dim; i++)
+                string linea;
+                while ((linea = reader.ReadLine()) != null)
                 {
-                    perc = (percentuale / 100) * p[i].prezzo; 
-                    p[i].prezzo = p[i].prezzo - perc;
+                    if (linea.Contains(prodottoDaCercare))
+                    {
+                        conteggio++;
+                    }
                 }
-                aggiornaVista(dim);
             }
+            return conteggio;
         }
-
-        private void agg_btn_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(prc_box.Text))
-            {
-                MessageBox.Show("Non hai inserito la percentuale!");
-            }
-            else
-            {
-                float percentuale = float.Parse(prc_box.Text);
-                float perc;
-                // aggiunge la percentuale a ogni prezzo
-                for (int i = 0; i < dim; i++)
-                {
-                    perc = (percentuale / 100) * p[i].prezzo;
-                    p[i].prezzo = p[i].prezzo + perc;
-                }
-                aggiornaVista(dim);
-            }
-        }
+       
     }
+
 }
