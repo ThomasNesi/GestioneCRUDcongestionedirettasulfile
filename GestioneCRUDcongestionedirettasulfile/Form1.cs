@@ -150,7 +150,7 @@ namespace GestioneCRUDcongestionedirettasulfile
                     string FilePath = @"prodotti.txt";
                     var oFile = new FileStream(FilePath, FileMode.Append, FileAccess.Write, FileShare.Read);
                     StreamWriter sw = new StreamWriter(oFile);
-                    sw.WriteLine($"{Nome_box.Text};{Prezzo_box.Text}");
+                    sw.WriteLine($"{nomeprodotto};{Prezzo_box.Text}"/*;1;0;".PadRight(recordLenght - 4) + "##"*/);
                     sw.Close();
                     MessageBox.Show("Prodotto aggiunto al file.");
 
