@@ -46,8 +46,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.recupera_btn = new System.Windows.Forms.Button();
             this.reset_btn = new System.Windows.Forms.Button();
-            this.ricercaprezzo_box = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cancfisica_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // articoli
@@ -115,9 +114,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(70, 150);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(88, 26);
+            this.label6.Size = new System.Drawing.Size(57, 26);
             this.label6.TabIndex = 40;
-            this.label6.Text = "RICERCA \r\nNOME/PREZZO";
+            this.label6.Text = "RICERCA \r\nNOME";
             // 
             // label5
             // 
@@ -139,7 +138,7 @@
             // 
             // ricercanome_box
             // 
-            this.ricercanome_box.Location = new System.Drawing.Point(136, 190);
+            this.ricercanome_box.Location = new System.Drawing.Point(73, 179);
             this.ricercanome_box.Name = "ricercanome_box";
             this.ricercanome_box.Size = new System.Drawing.Size(97, 20);
             this.ricercanome_box.TabIndex = 36;
@@ -210,29 +209,21 @@
             this.reset_btn.UseVisualStyleBackColor = true;
             this.reset_btn.Click += new System.EventHandler(this.reset_btn_Click);
             // 
-            // ricercaprezzo_box
+            // cancfisica_btn
             // 
-            this.ricercaprezzo_box.Location = new System.Drawing.Point(29, 190);
-            this.ricercaprezzo_box.Name = "ricercaprezzo_box";
-            this.ricercaprezzo_box.Size = new System.Drawing.Size(100, 20);
-            this.ricercaprezzo_box.TabIndex = 46;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(342, 150);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 39);
-            this.button1.TabIndex = 47;
-            this.button1.Text = "cancellazione fisica";
-            this.button1.UseVisualStyleBackColor = true;
+            this.cancfisica_btn.Location = new System.Drawing.Point(342, 150);
+            this.cancfisica_btn.Name = "cancfisica_btn";
+            this.cancfisica_btn.Size = new System.Drawing.Size(85, 39);
+            this.cancfisica_btn.TabIndex = 47;
+            this.cancfisica_btn.Text = "cancellazione fisica";
+            this.cancfisica_btn.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.ricercaprezzo_box);
+            this.Controls.Add(this.cancfisica_btn);
             this.Controls.Add(this.reset_btn);
             this.Controls.Add(this.recupera_btn);
             this.Controls.Add(this.canclogica_btn);
@@ -278,8 +269,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button recupera_btn;
         private System.Windows.Forms.Button reset_btn;
-        private System.Windows.Forms.TextBox ricercaprezzo_box;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button cancfisica_btn;
     }
 }
 
