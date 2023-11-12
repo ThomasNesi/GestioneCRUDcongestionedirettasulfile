@@ -32,12 +32,10 @@
             this.mostraprod_btn = new System.Windows.Forms.Button();
             this.fileprod_btn = new System.Windows.Forms.Button();
             this.canclogica_btn = new System.Windows.Forms.Button();
-            this.Modifican_btn = new System.Windows.Forms.Button();
-            this.Modificap_btn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.ricercanome_box = new System.Windows.Forms.TextBox();
+            this.ricerca_box = new System.Windows.Forms.TextBox();
             this.modnome_box = new System.Windows.Forms.TextBox();
             this.modprezzo_box = new System.Windows.Forms.TextBox();
             this.Prezzo_box = new System.Windows.Forms.TextBox();
@@ -47,6 +45,7 @@
             this.recupera_btn = new System.Windows.Forms.Button();
             this.reset_btn = new System.Windows.Forms.Button();
             this.cancfisica_btn = new System.Windows.Forms.Button();
+            this.Modifica_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // articoli
@@ -89,26 +88,6 @@
             this.canclogica_btn.UseVisualStyleBackColor = true;
             this.canclogica_btn.Click += new System.EventHandler(this.canclogica_btn_Click);
             // 
-            // Modifican_btn
-            // 
-            this.Modifican_btn.Location = new System.Drawing.Point(155, 239);
-            this.Modifican_btn.Name = "Modifican_btn";
-            this.Modifican_btn.Size = new System.Drawing.Size(78, 28);
-            this.Modifican_btn.TabIndex = 42;
-            this.Modifican_btn.Text = "modifica";
-            this.Modifican_btn.UseVisualStyleBackColor = true;
-            this.Modifican_btn.Click += new System.EventHandler(this.Modifican_btn_Click);
-            // 
-            // Modificap_btn
-            // 
-            this.Modificap_btn.Location = new System.Drawing.Point(155, 278);
-            this.Modificap_btn.Name = "Modificap_btn";
-            this.Modificap_btn.Size = new System.Drawing.Size(78, 28);
-            this.Modificap_btn.TabIndex = 41;
-            this.Modificap_btn.Text = "modifica";
-            this.Modificap_btn.UseVisualStyleBackColor = true;
-            this.Modificap_btn.Click += new System.EventHandler(this.Modificap_btn_Click);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -136,12 +115,12 @@
             this.label4.TabIndex = 38;
             this.label4.Text = "MODIFICA PREZZO";
             // 
-            // ricercanome_box
+            // ricerca_box
             // 
-            this.ricercanome_box.Location = new System.Drawing.Point(73, 179);
-            this.ricercanome_box.Name = "ricercanome_box";
-            this.ricercanome_box.Size = new System.Drawing.Size(97, 20);
-            this.ricercanome_box.TabIndex = 36;
+            this.ricerca_box.Location = new System.Drawing.Point(73, 179);
+            this.ricerca_box.Name = "ricerca_box";
+            this.ricerca_box.Size = new System.Drawing.Size(97, 20);
+            this.ricerca_box.TabIndex = 36;
             // 
             // modnome_box
             // 
@@ -197,7 +176,6 @@
             this.recupera_btn.TabIndex = 44;
             this.recupera_btn.Text = "recupera prodotto";
             this.recupera_btn.UseVisualStyleBackColor = true;
-            this.recupera_btn.Click += new System.EventHandler(this.recupera_btn_Click);
             // 
             // reset_btn
             // 
@@ -217,22 +195,32 @@
             this.cancfisica_btn.TabIndex = 47;
             this.cancfisica_btn.Text = "cancellazione fisica";
             this.cancfisica_btn.UseVisualStyleBackColor = true;
+            this.cancfisica_btn.Click += new System.EventHandler(this.cancfisica_btn_Click);
+            // 
+            // Modifica_btn
+            // 
+            this.Modifica_btn.Location = new System.Drawing.Point(161, 260);
+            this.Modifica_btn.Name = "Modifica_btn";
+            this.Modifica_btn.Size = new System.Drawing.Size(75, 23);
+            this.Modifica_btn.TabIndex = 48;
+            this.Modifica_btn.Text = "Modifica";
+            this.Modifica_btn.UseVisualStyleBackColor = true;
+            this.Modifica_btn.Click += new System.EventHandler(this.Modifica_btn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 371);
+            this.Controls.Add(this.Modifica_btn);
             this.Controls.Add(this.cancfisica_btn);
             this.Controls.Add(this.reset_btn);
             this.Controls.Add(this.recupera_btn);
             this.Controls.Add(this.canclogica_btn);
-            this.Controls.Add(this.Modifican_btn);
-            this.Controls.Add(this.Modificap_btn);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.ricercanome_box);
+            this.Controls.Add(this.ricerca_box);
             this.Controls.Add(this.modnome_box);
             this.Controls.Add(this.modprezzo_box);
             this.Controls.Add(this.Prezzo_box);
@@ -255,12 +243,10 @@
         private System.Windows.Forms.Button mostraprod_btn;
         private System.Windows.Forms.Button fileprod_btn;
         private System.Windows.Forms.Button canclogica_btn;
-        private System.Windows.Forms.Button Modifican_btn;
-        private System.Windows.Forms.Button Modificap_btn;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox ricercanome_box;
+        private System.Windows.Forms.TextBox ricerca_box;
         private System.Windows.Forms.TextBox modnome_box;
         private System.Windows.Forms.TextBox modprezzo_box;
         private System.Windows.Forms.TextBox Prezzo_box;
@@ -270,6 +256,7 @@
         private System.Windows.Forms.Button recupera_btn;
         private System.Windows.Forms.Button reset_btn;
         private System.Windows.Forms.Button cancfisica_btn;
+        private System.Windows.Forms.Button Modifica_btn;
     }
 }
 
