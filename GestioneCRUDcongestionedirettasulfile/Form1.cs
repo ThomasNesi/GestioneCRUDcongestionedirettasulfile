@@ -38,7 +38,7 @@ namespace GestioneCRUDcongestionedirettasulfile
             sw.Close();
         }
 
-        public int ricercaprodotti(string nome, string filePath)
+        public int indprodotti(string nome, string filePath)
         {
             int posizione = 0;
 
@@ -69,15 +69,13 @@ namespace GestioneCRUDcongestionedirettasulfile
     public void modificaprodotto(int posizione, string nome, float prezzo, string filePath)
         {
 
-            prodotto prod = recuperaprodotto(posizione, filePath); 
-
             var file = new FileStream(filePath, FileMode.Open, FileAccess.Write);
             BinaryWriter writer = new BinaryWriter(file);
 
             // Posiziona il puntatore del file alla posizione corretta per sovrascrivere il record del prodotto.
             file.Seek(recordLenght * posizione, SeekOrigin.Begin);
 
-            string line = $"{nome};{prezzo};{prod.Numero};0;".PadRight(recordLenght - 4) + "##";
+            string line = $"{nome};{prezzo};1;0;".PadRight(recordLenght - 4) + "##";
 
             byte[] bytes = Encoding.UTF8.GetBytes(line);
 
@@ -87,79 +85,128 @@ namespace GestioneCRUDcongestionedirettasulfile
             writer.Close();
             file.Close();
         }
-
-        public void canclogica(int posizione, string filePath)
+        public string[] ricercaprod(string nome, string filePath)
         {
-            prodotto prod = recuperaprodotto(posizione, filePath);
-
-            prod.Visualizza = false;
-
-            sprodotti(prod, posizione, filePath);
-        }
-        public void cancfisica(int posizione, string filePath)
-        {
-            using (var file = new FileStream(filePath, FileMode.Open, FileAccess.Write))
+            int riga = 0;
+            using (StreamReader sr = File.OpenText(filePath))
             {
-                
-                file.Seek(posizione, SeekOrigin.Begin);
-
-                var emptyLine = new string(' ', recordLenght);
-                byte[] bytes = Encoding.UTF8.GetBytes(emptyLine);
-                file.Write(bytes, 0, bytes.Length);
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] dati = line.Split(';');
+                    if (dati[3] == "0" && dati[0] == nome)
+                    {
+                        sr.Close();
+                        return dati;
+                    }
+                    riga++;
+                }
             }
-            MessageBox.Show($"Prodotto fisicamente cancellato.");
+            return null;
+        }
+
+        public void canclogica(string filePath)
+        {
+            int indice = indprodotti(ricerca_box.Text, filePath);
+            if (string.IsNullOrEmpty(ricerca_box.Text))
+            {
+                MessageBox.Show("Inserire un prodotto");
+                return;
+            }
+            else if (indice == -1)
+            {
+                MessageBox.Show("Il prodotto non esiste");
+            }
+            else if (indice >= 0)
+            {
+                sprodotti(filePath);
+                MessageBox.Show("Prodotto cancellato logicamente");
+            }
+        }
+        public void cancfisica(string filePath)
+        {
+            int ind = indprodotti(ricerca_box.Text, filePath);
+            if (string.IsNullOrEmpty(ricerca_box.Text))
+            {
+                MessageBox.Show("Non è stato inserito nulla");
+                return;
+            }
+            else if (ind == -1)
+            {
+                MessageBox.Show("Il prodotto ricercato non esiste");
+            }
+            else if (ind >= 0)
+            {
+                List<string> line = new List<string>();
+
+                using (StreamReader salva = File.OpenText(filePath))
+                {
+                    string lettura;
+                    while ((lettura = salva.ReadLine()) != null)
+                    {
+                        line.Add(lettura);
+                    }
+                }
+
+                line.RemoveAt(ind);
+
+                using (StreamWriter scrivi = new StreamWriter(filePath, false))
+                {
+                    foreach (string riga in line)
+                    {
+                        scrivi.WriteLine(riga);
+                    }
+                }
+                MessageBox.Show("Prodotto eliminato fisicamente");
+            }
 
         }
-        private void sprodotti(prodotto prod, int posizione, string filePath)
+        private void sprodotti(string filePath)
         {
-            using (var file = new FileStream(filePath, FileMode.Open, FileAccess.Write))
-            using (var writer = new BinaryWriter(file))
+            int indice = indprodotti(ricerca_box.Text, filePath);
+            string[] prodotto = ricercaprod(ricerca_box.Text, filePath);
+            string line;
+            var salva = new FileStream(filePath, FileMode.Open, FileAccess.Write);
+            BinaryWriter scrivi = new BinaryWriter(salva);
+            salva.Seek(recordLenght * indice, SeekOrigin.Begin);
+            line = $"{prodotto[0]};{prodotto[1]};{prodotto[3]};1;".PadRight(recordLenght - 4) + "##";
+            byte[] bytes = Encoding.UTF8.GetBytes(line);
+            scrivi.Write(bytes, 0, bytes.Length);
+            scrivi.Close();
+            salva.Close();
+        }
+
+        private void recuperaprodotto(string filePath)
+        {
+            int indice = indprodotti(ricerca_box.Text, filePath);
+            if (string.IsNullOrEmpty(ricerca_box.Text))
             {
-
-                file.Seek(recordLenght * posizione, SeekOrigin.Begin);
-
-                string line = $"{prod.Nome};{prod.Prezzo};{prod.Numero};{prod.Visualizza};".PadRight(recordLenght - 4) + "##";
+                MessageBox.Show("Inserire un prodotto");
+                return;
+            }
+            else if (indice == -1)
+            {
+                MessageBox.Show("Prodotto non esiste");
+            }
+            else if (indice >= 0)
+            {
+                string[] prod = ricercaprod(ricerca_box.Text, filePath);
+                string line;
+                var salva = new FileStream(filePath, FileMode.Open, FileAccess.Write);
+                BinaryWriter scrivi = new BinaryWriter(salva);
+                salva.Seek(recordLenght * indice, SeekOrigin.Begin);
+                line = $"{prod[0]};{prod[1]};{prod[3]};0;".PadRight(recordLenght - 4) + "##";
                 byte[] bytes = Encoding.UTF8.GetBytes(line);
-
-                writer.Write(bytes);
+                scrivi.Write(bytes, 0, bytes.Length);
+                scrivi.Close();
+                salva.Close();
+                MessageBox.Show("Prodotto recuperato");
             }
         }
-
-        private prodotto recuperaprodotto(int position, string filePath)
-        {
-            using (var sr = new StreamReader(filePath))
-            {
-                sr.BaseStream.Seek(recordLenght * position, SeekOrigin.Begin);
-                string line = sr.ReadLine();
-                sr.Close();
-
-                string[] data = line.Split(';');
-
-                prodotto prod;
-                prod.Nome = data[0];
-                prod.Prezzo = float.Parse(data[1]);
-                prod.Numero = int.Parse(data[2]);
-                prod.Visualizza = data[3] == "1";
-
-                return prod;
-            }
-        }
-        private int posizionecanc = -1;
         private void canclogica_btn_Click(object sender, EventArgs e)
         {
-            string nomeCercato = ricerca_box.Text;
-
-            int posizione = ricercaprodotti(nomeCercato, "prodotti.dat");
-
-            if (posizione != -1)
-            {
-                canclogica(posizione, "prodotti.dat");
+                canclogica("prodotti.dat");
                 MessageBox.Show($"Prodotto cancellato logicamente.");
-            }
-            else
-            {
-                MessageBox.Show($"Prodotto non trovato.");
-            }
         }
 
         private void fileprod_btn_Click(object sender, EventArgs e)
@@ -222,20 +269,7 @@ namespace GestioneCRUDcongestionedirettasulfile
 
         private void recupera_btn_Click(object sender, EventArgs e)
         {
-            string nomeCercato = ricerca_box.Text;
-            string lunghezza = $"nome;prezzo;1;0;##";
-            int recordLength = lunghezza.Length;
-
-            int posizione = ricercaprodotti(nomeCercato, "prodotti.dat");
-
-            if (posizionecanc != -1)
-            {
-                prodotto prodottoRecuperato = recuperaprodotto(posizione, "prodotti.dat");
-            }
-            else
-            {
-                MessageBox.Show($"Prodotto con nome '{nomeCercato}' non trovato.");
-            }
+            recuperaprodotto("prodotti.dat");
         }
 
 
@@ -243,41 +277,25 @@ namespace GestioneCRUDcongestionedirettasulfile
         {
             string nuovonome = modnome_box.Text;
             float nuovoprezzo = float.Parse(modprezzo_box.Text);
-            string lunghezza = $"{nuovonome};{nuovoprezzo};1;0;";
-            int recordLength = lunghezza.Length;
             string ricnome = ricerca_box.Text;
 
-            int posizione = ricercaprodotti(ricnome, "prodotti.dat");
+            int posizione = indprodotti(ricnome, "prodotti.dat");
 
-            if (posizione != -1)
+            if (posizione == -1)
+            {
+                MessageBox.Show($"Prodotto non trovato.");
+            }
+            else if(posizione >= 0)
             {
                 modificaprodotto(posizione, nuovonome, nuovoprezzo, "prodotti.dat");
                 MessageBox.Show($"Prodotto modificato.");
-            }
-            else
-            {
-                MessageBox.Show($"Prodotto non trovato.");
             }
         }
 
         private void cancfisica_btn_Click(object sender, EventArgs e)
         {
-            string nomeCercato = ricerca_box.Text;
-
-            int posizione = ricercaprodotti(nomeCercato, "prodotti.dat");
-
-            if (posizione != -1)
-            {
-                // Esegui la cancellazione fisica.
-                cancfisica(posizione, "prodotti.dat");
-
-                MessageBox.Show($"Prodotto cancellato fisicamente.");
-
-            }
-            else
-            {
-                MessageBox.Show($"Prodotto con nome '{nomeCercato}' non trovato.");
-            }
+            cancfisica("prodotti.dat");
+            ricerca_box.Clear();
         }
     }
 }
