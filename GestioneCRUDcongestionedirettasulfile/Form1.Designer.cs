@@ -54,16 +54,16 @@
             this.articoli.BackColor = System.Drawing.SystemColors.Window;
             this.articoli.ForeColor = System.Drawing.SystemColors.WindowText;
             this.articoli.FormattingEnabled = true;
-            this.articoli.Location = new System.Drawing.Point(465, 12);
+            this.articoli.Location = new System.Drawing.Point(225, 75);
             this.articoli.Name = "articoli";
-            this.articoli.Size = new System.Drawing.Size(323, 342);
+            this.articoli.Size = new System.Drawing.Size(248, 199);
             this.articoli.TabIndex = 14;
             // 
             // mostraprod_btn
             // 
-            this.mostraprod_btn.Location = new System.Drawing.Point(342, 286);
+            this.mostraprod_btn.Location = new System.Drawing.Point(297, 289);
             this.mostraprod_btn.Name = "mostraprod_btn";
-            this.mostraprod_btn.Size = new System.Drawing.Size(89, 37);
+            this.mostraprod_btn.Size = new System.Drawing.Size(100, 52);
             this.mostraprod_btn.TabIndex = 29;
             this.mostraprod_btn.Text = "mostra prodotti nel file";
             this.mostraprod_btn.UseVisualStyleBackColor = true;
@@ -71,7 +71,7 @@
             // 
             // fileprod_btn
             // 
-            this.fileprod_btn.Location = new System.Drawing.Point(112, 62);
+            this.fileprod_btn.Location = new System.Drawing.Point(34, 101);
             this.fileprod_btn.Name = "fileprod_btn";
             this.fileprod_btn.Size = new System.Drawing.Size(82, 21);
             this.fileprod_btn.TabIndex = 28;
@@ -81,9 +81,9 @@
             // 
             // canclogica_btn
             // 
-            this.canclogica_btn.Location = new System.Drawing.Point(342, 133);
+            this.canclogica_btn.Location = new System.Drawing.Point(506, 20);
             this.canclogica_btn.Name = "canclogica_btn";
-            this.canclogica_btn.Size = new System.Drawing.Size(85, 40);
+            this.canclogica_btn.Size = new System.Drawing.Size(83, 40);
             this.canclogica_btn.TabIndex = 43;
             this.canclogica_btn.Text = "cancellazione logica";
             this.canclogica_btn.UseVisualStyleBackColor = true;
@@ -92,7 +92,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(51, 104);
+            this.label6.Location = new System.Drawing.Point(303, 7);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 26);
             this.label6.TabIndex = 40;
@@ -101,7 +101,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(36, 231);
+            this.label5.Location = new System.Drawing.Point(31, 185);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(93, 13);
             this.label5.TabIndex = 39;
@@ -110,7 +110,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(36, 270);
+            this.label4.Location = new System.Drawing.Point(31, 224);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(105, 13);
             this.label4.TabIndex = 38;
@@ -118,28 +118,28 @@
             // 
             // ricerca_box
             // 
-            this.ricerca_box.Location = new System.Drawing.Point(54, 144);
+            this.ricerca_box.Location = new System.Drawing.Point(280, 36);
             this.ricerca_box.Name = "ricerca_box";
             this.ricerca_box.Size = new System.Drawing.Size(117, 20);
             this.ricerca_box.TabIndex = 36;
             // 
             // modnome_box
             // 
-            this.modnome_box.Location = new System.Drawing.Point(39, 247);
+            this.modnome_box.Location = new System.Drawing.Point(34, 201);
             this.modnome_box.Name = "modnome_box";
             this.modnome_box.Size = new System.Drawing.Size(97, 20);
             this.modnome_box.TabIndex = 35;
             // 
             // modprezzo_box
             // 
-            this.modprezzo_box.Location = new System.Drawing.Point(39, 286);
+            this.modprezzo_box.Location = new System.Drawing.Point(34, 240);
             this.modprezzo_box.Name = "modprezzo_box";
             this.modprezzo_box.Size = new System.Drawing.Size(97, 20);
             this.modprezzo_box.TabIndex = 34;
             // 
             // Prezzo_box
             // 
-            this.Prezzo_box.Location = new System.Drawing.Point(175, 36);
+            this.Prezzo_box.Location = new System.Drawing.Point(34, 75);
             this.Prezzo_box.Name = "Prezzo_box";
             this.Prezzo_box.Size = new System.Drawing.Size(97, 20);
             this.Prezzo_box.TabIndex = 33;
@@ -147,7 +147,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(172, 20);
+            this.label2.Location = new System.Drawing.Point(31, 59);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 32;
@@ -171,7 +171,7 @@
             // 
             // reset_btn
             // 
-            this.reset_btn.Location = new System.Drawing.Point(342, 20);
+            this.reset_btn.Location = new System.Drawing.Point(515, 243);
             this.reset_btn.Name = "reset_btn";
             this.reset_btn.Size = new System.Drawing.Size(89, 40);
             this.reset_btn.TabIndex = 45;
@@ -181,9 +181,9 @@
             // 
             // cancfisica_btn
             // 
-            this.cancfisica_btn.Location = new System.Drawing.Point(342, 187);
+            this.cancfisica_btn.Location = new System.Drawing.Point(605, 21);
             this.cancfisica_btn.Name = "cancfisica_btn";
-            this.cancfisica_btn.Size = new System.Drawing.Size(85, 39);
+            this.cancfisica_btn.Size = new System.Drawing.Size(83, 39);
             this.cancfisica_btn.TabIndex = 47;
             this.cancfisica_btn.Text = "cancellazione fisica";
             this.cancfisica_btn.UseVisualStyleBackColor = true;
@@ -191,7 +191,7 @@
             // 
             // Modifica_btn
             // 
-            this.Modifica_btn.Location = new System.Drawing.Point(161, 260);
+            this.Modifica_btn.Location = new System.Drawing.Point(34, 266);
             this.Modifica_btn.Name = "Modifica_btn";
             this.Modifica_btn.Size = new System.Drawing.Size(75, 23);
             this.Modifica_btn.TabIndex = 48;
@@ -201,9 +201,9 @@
             // 
             // recprodotto_btn
             // 
-            this.recprodotto_btn.Location = new System.Drawing.Point(242, 159);
+            this.recprodotto_btn.Location = new System.Drawing.Point(506, 66);
             this.recprodotto_btn.Name = "recprodotto_btn";
-            this.recprodotto_btn.Size = new System.Drawing.Size(75, 47);
+            this.recprodotto_btn.Size = new System.Drawing.Size(83, 36);
             this.recprodotto_btn.TabIndex = 49;
             this.recprodotto_btn.Text = "recupera\r\nprodotto";
             this.recprodotto_btn.UseVisualStyleBackColor = true;
@@ -211,9 +211,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(342, 66);
+            this.button1.Location = new System.Drawing.Point(515, 200);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 23);
+            this.button1.Size = new System.Drawing.Size(89, 37);
             this.button1.TabIndex = 50;
             this.button1.Text = "apri file";
             this.button1.UseVisualStyleBackColor = true;
@@ -223,7 +223,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 371);
+            this.ClientSize = new System.Drawing.Size(719, 371);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.recprodotto_btn);
             this.Controls.Add(this.Modifica_btn);

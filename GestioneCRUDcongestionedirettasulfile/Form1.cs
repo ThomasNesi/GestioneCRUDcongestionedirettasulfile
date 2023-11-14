@@ -245,8 +245,15 @@ namespace GestioneCRUDcongestionedirettasulfile
  
         private void canclogica_btn_Click(object sender, EventArgs e)
         {
+            if (File.Exists("prodotti.dat"))
+            {
                 canclogica("prodotti.dat");
-                MessageBox.Show($"Prodotto cancellato logicamente.");
+                ricerca_box.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Il file non esiste");
+            }   
         }
 
         private void fileprod_btn_Click(object sender, EventArgs e)
@@ -255,12 +262,19 @@ namespace GestioneCRUDcongestionedirettasulfile
             {
                 MessageBox.Show("Non hai inserito nulla nel prezzo o nel nome prodotto!");
             }
+            else if(!double.TryParse(Prezzo_box.Text, out double pr))
+            {
+                MessageBox.Show("Inserisci un numero nella casella PREZZO.");
+            }
             else
             {
                 string nome = Nome_box.Text;
                 float prezzo = float.Parse(Prezzo_box.Text);
                 aggiungiprodotti(nome, prezzo, "prodotti.dat");
+                MessageBox.Show("Prodotto inserito correttamente.");
             }
+            Nome_box.Clear();
+            Prezzo_box.Clear();
         }
 
         private void mostraprod_btn_Click(object sender, EventArgs e)
@@ -309,9 +323,13 @@ namespace GestioneCRUDcongestionedirettasulfile
         }
         private void Modifica_btn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(modnome_box.Text) || string.IsNullOrEmpty(Prezzo_box.Text))
+            if (string.IsNullOrEmpty(modnome_box.Text) || string.IsNullOrEmpty(modprezzo_box.Text))
             {
                 MessageBox.Show("Non hai inserito nulla nel nuovo prezzo o nel nuovo nome prodotto!");
+            }
+            else if (!double.TryParse(modprezzo_box.Text, out double pr))
+            {
+                MessageBox.Show("Inserisci un numero nella casella MODIFICA PREZZO.");
             }
             else
             {
@@ -331,29 +349,47 @@ namespace GestioneCRUDcongestionedirettasulfile
                     MessageBox.Show($"Prodotto modificato.");
                 }
             }
-       
+            modnome_box.Clear();
+            modprezzo_box.Clear();
+            ricerca_box.Clear();
         }
 
         private void cancfisica_btn_Click(object sender, EventArgs e)
         {
-            cancfisica("prodotti.dat");
-            ricerca_box.Clear();
+            if (File.Exists("prodotti.dat"))
+            {
+                cancfisica("prodotti.dat");
+                ricerca_box.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Il file non esiste");
+            }
         }
 
         private void recprodotto_btn_Click(object sender, EventArgs e)
         {
-            string ricnome = ricerca_box.Text;
-            int posizione = indprodottiric(ricnome, "prodotti.dat");
+            if (File.Exists("prodotti.dat"))
+            {
+                string ricnome = ricerca_box.Text;
+                int posizione = indprodottiric(ricnome, "prodotti.dat");
+
+                if (posizione == -1)
+                {
+                    MessageBox.Show($"Prodotto non trovato.");
+                }
+                else if (posizione >= 0)
+                {
+                    recuperaprodotto(posizione, "prodotti.dat");
+                    MessageBox.Show("Prodotto recuperato");
+                    ricerca_box.Clear();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Il file non esiste");
+            }
             
-            if (posizione == -1)
-            {
-                MessageBox.Show($"Prodotto non trovato.");
-            }
-            else if (posizione >= 0)
-            {
-                recuperaprodotto(posizione, "prodotti.dat");
-                MessageBox.Show("Prodotto recuperato");
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -362,6 +398,10 @@ namespace GestioneCRUDcongestionedirettasulfile
             {
                 string file = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "prodotti.dat");
                 System.Diagnostics.Process.Start(file);
+            }
+            else
+            {
+                MessageBox.Show("Il file non esiste");
             }
         }
     }
