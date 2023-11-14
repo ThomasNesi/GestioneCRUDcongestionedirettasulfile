@@ -42,10 +42,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Nome_box = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.recupera_btn = new System.Windows.Forms.Button();
             this.reset_btn = new System.Windows.Forms.Button();
             this.cancfisica_btn = new System.Windows.Forms.Button();
             this.Modifica_btn = new System.Windows.Forms.Button();
+            this.recprodotto_btn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // articoli
@@ -60,7 +61,7 @@
             // 
             // mostraprod_btn
             // 
-            this.mostraprod_btn.Location = new System.Drawing.Point(356, 286);
+            this.mostraprod_btn.Location = new System.Drawing.Point(342, 286);
             this.mostraprod_btn.Name = "mostraprod_btn";
             this.mostraprod_btn.Size = new System.Drawing.Size(89, 37);
             this.mostraprod_btn.TabIndex = 29;
@@ -80,7 +81,7 @@
             // 
             // canclogica_btn
             // 
-            this.canclogica_btn.Location = new System.Drawing.Point(342, 104);
+            this.canclogica_btn.Location = new System.Drawing.Point(342, 133);
             this.canclogica_btn.Name = "canclogica_btn";
             this.canclogica_btn.Size = new System.Drawing.Size(85, 40);
             this.canclogica_btn.TabIndex = 43;
@@ -91,11 +92,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(70, 150);
+            this.label6.Location = new System.Drawing.Point(51, 104);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 26);
+            this.label6.Size = new System.Drawing.Size(68, 26);
             this.label6.TabIndex = 40;
-            this.label6.Text = "RICERCA \r\nNOME";
+            this.label6.Text = "RICERCA \r\nPRODOTTO";
             // 
             // label5
             // 
@@ -117,9 +118,9 @@
             // 
             // ricerca_box
             // 
-            this.ricerca_box.Location = new System.Drawing.Point(73, 179);
+            this.ricerca_box.Location = new System.Drawing.Point(54, 144);
             this.ricerca_box.Name = "ricerca_box";
-            this.ricerca_box.Size = new System.Drawing.Size(97, 20);
+            this.ricerca_box.Size = new System.Drawing.Size(117, 20);
             this.ricerca_box.TabIndex = 36;
             // 
             // modnome_box
@@ -168,20 +169,11 @@
             this.label1.TabIndex = 30;
             this.label1.Text = "NOME";
             // 
-            // recupera_btn
-            // 
-            this.recupera_btn.Location = new System.Drawing.Point(223, 121);
-            this.recupera_btn.Name = "recupera_btn";
-            this.recupera_btn.Size = new System.Drawing.Size(85, 37);
-            this.recupera_btn.TabIndex = 44;
-            this.recupera_btn.Text = "recupera prodotto";
-            this.recupera_btn.UseVisualStyleBackColor = true;
-            // 
             // reset_btn
             // 
             this.reset_btn.Location = new System.Drawing.Point(342, 20);
             this.reset_btn.Name = "reset_btn";
-            this.reset_btn.Size = new System.Drawing.Size(85, 40);
+            this.reset_btn.Size = new System.Drawing.Size(89, 40);
             this.reset_btn.TabIndex = 45;
             this.reset_btn.Text = "reset file";
             this.reset_btn.UseVisualStyleBackColor = true;
@@ -189,7 +181,7 @@
             // 
             // cancfisica_btn
             // 
-            this.cancfisica_btn.Location = new System.Drawing.Point(342, 150);
+            this.cancfisica_btn.Location = new System.Drawing.Point(342, 187);
             this.cancfisica_btn.Name = "cancfisica_btn";
             this.cancfisica_btn.Size = new System.Drawing.Size(85, 39);
             this.cancfisica_btn.TabIndex = 47;
@@ -207,15 +199,36 @@
             this.Modifica_btn.UseVisualStyleBackColor = true;
             this.Modifica_btn.Click += new System.EventHandler(this.Modifica_btn_Click);
             // 
+            // recprodotto_btn
+            // 
+            this.recprodotto_btn.Location = new System.Drawing.Point(242, 159);
+            this.recprodotto_btn.Name = "recprodotto_btn";
+            this.recprodotto_btn.Size = new System.Drawing.Size(75, 47);
+            this.recprodotto_btn.TabIndex = 49;
+            this.recprodotto_btn.Text = "recupera\r\nprodotto";
+            this.recprodotto_btn.UseVisualStyleBackColor = true;
+            this.recprodotto_btn.Click += new System.EventHandler(this.recprodotto_btn_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(342, 66);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(89, 23);
+            this.button1.TabIndex = 50;
+            this.button1.Text = "apri file";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 371);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.recprodotto_btn);
             this.Controls.Add(this.Modifica_btn);
             this.Controls.Add(this.cancfisica_btn);
             this.Controls.Add(this.reset_btn);
-            this.Controls.Add(this.recupera_btn);
             this.Controls.Add(this.canclogica_btn);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -253,10 +266,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Nome_box;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button recupera_btn;
         private System.Windows.Forms.Button reset_btn;
         private System.Windows.Forms.Button cancfisica_btn;
         private System.Windows.Forms.Button Modifica_btn;
+        private System.Windows.Forms.Button recprodotto_btn;
+        private System.Windows.Forms.Button button1;
     }
 }
 
